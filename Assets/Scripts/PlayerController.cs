@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private PlayerCanvas playerCanvas;
     private Transform[] _waypoints;
     private int _currentWaypointIndex = 0;
     private bool _isTurnPlayer;

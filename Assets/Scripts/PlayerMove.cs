@@ -1,12 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float swerveRange;
-    
+
     void Update()
     {
         MovePlayer();
