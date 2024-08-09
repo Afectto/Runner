@@ -21,6 +21,24 @@ public class PlayerController : MonoBehaviour
         _currentLvl = 0;
         OnLvlUp();
         playerCanvas.OnNeedLvlUp += OnLvlUp;
+        playerCanvas.OnNeedLvlDown += OnLvlDown;
+    }
+
+    private void OnLvlDown(float value)
+    {        
+        _currentLvl--;
+        if (_currentLvl <= 0)
+        {
+            _currentLvl = 0;
+            OnLvlUp();
+            return;
+        }
+        
+        var levelsInfo = _levelUpInfos.Find(obj => _currentLvl == obj.Lvl);
+        if (levelsInfo)
+        {
+            playerCanvas.Initialized(levelsInfo, Mathf.Abs(levelsInfo.ValueToNextLvl + value));
+        }
     }
 
     private void OnLvlUp()
@@ -49,13 +67,21 @@ public class PlayerController : MonoBehaviour
     
     private void MoveToNextWaypoint()
     {
-        if(_waypoints == null || _waypoints.Length <=0) return;;
+        if(_waypoints == null || _waypoints.Length <=0) return;
+        
+        
         if (_currentWaypointIndex < _waypoints.Length)
         {
             Transform target = _waypoints[_currentWaypointIndex];
-            float distanceToTarget = Vector3.Distance(transform.position, target.position);
             float turnThreshold = 2.5f;
                 
+            float distanceToTarget = Vector3.Distance(transform.position, target.position);
+            if (transform.position == target.position)
+            {
+                _currentWaypointIndex++;
+                return;
+            }
+            
             if (_currentWaypointIndex < _waypoints.Length - 1)
             {
 
@@ -77,10 +103,6 @@ public class PlayerController : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
             }
 
-            if (distanceToTarget < 0.1f)
-            {
-                _currentWaypointIndex++;
-            }
         }
     }
     

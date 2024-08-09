@@ -13,10 +13,11 @@ public class PlayerCanvas : MonoBehaviour
     private float _valueToLvlUp;
 
     public Action OnNeedLvlUp;
+    public Action<float> OnNeedLvlDown;
 
-    public void Initialized(LevelUpInfo info)
+    public void Initialized(LevelUpInfo info, float currentValue = 0.01f)
     {
-        _currentValue = 0.01f;
+        _currentValue = currentValue;
         _valueToLvlUp = info.ValueToNextLvl;
         UpdateSlider(info.Color);
         UpdateText(info.TextName, info.Color);
@@ -27,7 +28,7 @@ public class PlayerCanvas : MonoBehaviour
         _currentValue += value;
         if (_currentValue <= 0)
         {
-            _currentValue = 0.01f;
+            OnNeedLvlDown?.Invoke(_currentValue);
         }
         if (_currentValue >= _valueToLvlUp)
         {

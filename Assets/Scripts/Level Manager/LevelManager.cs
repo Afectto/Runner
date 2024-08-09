@@ -137,7 +137,7 @@ namespace ButchersGames
 #else
                 Instantiate(level, transform);
 #endif
-                FindObjectOfType<PlayerController>().SetWaypoints(level.GetWayPoints());
+                FindObjectOfType<PlayerController>().SetWaypoints(level.WayPoints);
             }
         }
 

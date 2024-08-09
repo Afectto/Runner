@@ -8,10 +8,9 @@ namespace ButchersGames
         [SerializeField] private Transform playerSpawnPoint;
         [SerializeField] private List<Transform> waypoints;
 
-        public List<Transform> GetWayPoints()
-        {
-            return waypoints;
-        }
+        public List<Transform> WayPoints => waypoints;
+        public Transform PlayerSpawnPoint => playerSpawnPoint;
+        
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {

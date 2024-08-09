@@ -221,6 +221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9033691355131409818}
   - component: {fileID: 186636127619312997}
+  - component: {fileID: 6540123555858912520}
   m_Layer: 0
   m_Name: Level_1
   m_TagString: Untagged
@@ -236,7 +237,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1728123415424104935}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -260,11 +261,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpawnPoint: {fileID: 4074686951152262016}
   waypoints:
+  - {fileID: 4074686951152262016}
   - {fileID: 8311028549572692615}
   - {fileID: 361664250901363885}
   - {fileID: 3617347913801138108}
   - {fileID: 1082107906894890283}
   - {fileID: 5639869594737981117}
+--- !u!114 &6540123555858912520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728123415424104935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53cc1cc2e5f128144a8d4dc6dece3e00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupsPrefab:
+  - {fileID: 3789282642012671667, guid: 05b250915685c5f46af4b01a3657dac5, type: 3}
+  - {fileID: 5623968960689831824, guid: dd147e6c0c36d21449069be2cbaf4ffb, type: 3}
+  spawnRange: 2.5
 --- !u!1 &3125676024221415610
 GameObject:
   m_ObjectHideFlags: 0

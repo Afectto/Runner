@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvl: 2
   valueToNextLvl: 15
-  color: {r: 0, g: 0.6212287, b: 1, a: 0}
-  textName: Wealthy
+  color: {r: 0, g: 0.6212287, b: 1, a: 1}
+  textName: "\u0421\u043E\u0441\u0442\u043E\u044F\u0442\u0435\u043B\u044C\u043D\u044B\u0439"

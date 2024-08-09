@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvl: 3
   valueToNextLvl: 30
-  color: {r: 0.6698113, g: 0.2938323, b: 0.64618945, a: 0}
-  textName: Rich
+  color: {r: 0.6698113, g: 0.2938323, b: 0.64618945, a: 1}
+  textName: "\u0411\u043E\u0433\u0430\u0442\u044B\u0439"
