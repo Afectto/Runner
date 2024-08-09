@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,28 +10,41 @@ public class PlayerCanvas : MonoBehaviour
     [SerializeField] private TextMeshProUGUI text;
 
     private float _currentValue;
-    private float _valueToLVLUp;
-    
-    private void Awake()
-    {
-        slider.value = 0.01f;
-        sliderFill.color = Color.yellow;
-        text.color = Color.yellow;
-        text.text = "Бедный";
-    }
+    private float _valueToLvlUp;
 
-    public void Update(float valueToLvl, Color color, string name)
+    public Action OnNeedLvlUp;
+
+    public void Initialized(LevelUpInfo info)
     {
         _currentValue = 0.01f;
-        _valueToLVLUp = valueToLvl;
-        UpdateSlider(color);
-        UpdateText(name, color);
+        _valueToLvlUp = info.ValueToNextLvl;
+        UpdateSlider(info.Color);
+        UpdateText(info.TextName, info.Color);
+    }
+
+    public void AddValue(float value)
+    {
+        _currentValue += value;
+        if (_currentValue <= 0)
+        {
+            _currentValue = 0.01f;
+        }
+        if (_currentValue >= _valueToLvlUp)
+        {
+            OnNeedLvlUp?.Invoke();
+        }
+        UpdateSlider();
     }
 
     private void UpdateSlider(Color color)
     {
-        slider.value = _valueToLVLUp / _currentValue;
+        UpdateSlider();
         sliderFill.color = color;
+    }
+
+    private void UpdateSlider()
+    {
+        slider.value =  _currentValue/ _valueToLvlUp;
     }
 
     private void UpdateText(string name, Color color)
