@@ -83,6 +83,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   playerCanvas: {fileID: 3710302491500715931}
+  skinsByLvl:
+  - {fileID: 2128026961916741388}
+  - {fileID: 5776649169838372744}
+  - {fileID: 1588318020729558439}
+  animator: {fileID: 3021509349960916573}
 --- !u!1 &3781199673212236096
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,7 +557,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.148
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -772,6 +777,26 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb8be41e7e921604c848f0464ae4a908, type: 3}
+--- !u!1 &1588318020729558439 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1256841003522951573, guid: eb8be41e7e921604c848f0464ae4a908, type: 3}
+  m_PrefabInstance: {fileID: 8684095768051688396}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2128026961916741388 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7281298225518208192, guid: eb8be41e7e921604c848f0464ae4a908, type: 3}
+  m_PrefabInstance: {fileID: 8684095768051688396}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3021509349960916573 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: eb8be41e7e921604c848f0464ae4a908, type: 3}
+  m_PrefabInstance: {fileID: 8684095768051688396}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5776649169838372744 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6291848880615795644, guid: eb8be41e7e921604c848f0464ae4a908, type: 3}
+  m_PrefabInstance: {fileID: 8684095768051688396}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9155433669791106087 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: eb8be41e7e921604c848f0464ae4a908, type: 3}

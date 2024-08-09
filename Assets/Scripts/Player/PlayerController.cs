@@ -6,11 +6,16 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private PlayerCanvas playerCanvas;
+    [SerializeField] private GameObject[] skinsByLvl;
+    [SerializeField] private Animator animator;
+    private GameObject _currentSkin;
+    
     private Transform[] _waypoints;
     private int _currentWaypointIndex = 0;
     private bool _isTurnPlayer;
     private int _currentLvl;
     private List<LevelUpInfo> _levelUpInfos;
+    private bool _isMove;
 
     private Vector3 target2Position;
     private Vector3 target3Position;
@@ -18,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _levelUpInfos = Resources.LoadAll<LevelUpInfo>("ScriptableObject/PlayerLVL").ToList();
+        _currentSkin = skinsByLvl[0];
         _currentLvl = 0;
         OnLvlUp();
         playerCanvas.OnNeedLvlUp += OnLvlUp;
@@ -38,6 +44,7 @@ public class PlayerController : MonoBehaviour
         if (levelsInfo)
         {
             playerCanvas.Initialized(levelsInfo, Mathf.Abs(levelsInfo.ValueToNextLvl + value));
+            ChangeSkin();
         }
     }
 
@@ -48,9 +55,18 @@ public class PlayerController : MonoBehaviour
         if (levelsInfo)
         {
             playerCanvas.Initialized(levelsInfo);
+            ChangeSkin();
         }
     }
-
+    
+    private void ChangeSkin()
+    {
+        _currentSkin.SetActive(false);
+        _currentSkin = skinsByLvl[_currentLvl - 1];
+        _currentSkin.SetActive(true);
+        
+    }
+    
     public void SetWaypoints(List<Transform> waypoints)
     {
         _waypoints = waypoints.ToArray();
@@ -58,10 +74,20 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        MoveToNextWaypoint();
-        if (_isTurnPlayer)
+        if (Input.anyKey)
         {
-            TurnPlayer();
+            _isMove = true;
+            animator.StopPlayback();
+            animator.SetBool("Sad Walk", true);
+        }
+        
+        if(_isMove)
+        {
+            MoveToNextWaypoint();
+            if (_isTurnPlayer)
+            {
+                TurnPlayer();
+            }
         }
     }
     
@@ -134,5 +160,6 @@ public class PlayerController : MonoBehaviour
     private void OnDestroy()
     {
         playerCanvas.OnNeedLvlUp -= OnLvlUp;
+        playerCanvas.OnNeedLvlDown -= OnLvlDown;
     }
 }

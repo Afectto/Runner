@@ -16,8 +16,19 @@ namespace ButchersGames
         void Start()
         {
             _level = GetComponent<Level>();
-            _waypoints = _level.WayPoints;
+            _waypoints = new List<Transform>(_level.WayPoints); // Клонирование массива в новый список
+            AddPlayerSpawnPointToWaypoints();
             SpawnPickups();
+        }
+        
+
+        private void AddPlayerSpawnPointToWaypoints()
+        {
+            // Предполагается, что _level.PlayerSpawnPoint - это Transform
+            if (_level.PlayerSpawnPoint != null && !_waypoints.Contains(_level.PlayerSpawnPoint))
+            {
+                _waypoints.Insert(0, _level.PlayerSpawnPoint); // Добавляем в начало списка
+            }
         }
         
         private void SpawnPickups()
