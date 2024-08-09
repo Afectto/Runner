@@ -31,6 +31,10 @@ namespace ButchersGames
 
         public event Action OnLevelStarted;
 
+        private void Awake()
+        {
+            RestartLevel();
+        }
 
         public void Init()
         {
@@ -133,6 +137,7 @@ namespace ButchersGames
 #else
                 Instantiate(level, transform);
 #endif
+                FindObjectOfType<PlayerController>().SetWaypoints(level.GetWayPoints());
             }
         }
 

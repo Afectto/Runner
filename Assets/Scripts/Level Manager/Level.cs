@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ButchersGames
@@ -5,7 +7,12 @@ namespace ButchersGames
     public class Level : MonoBehaviour
     {
         [SerializeField] private Transform playerSpawnPoint;
+        [SerializeField] private List<Transform> waypoints;
 
+        public List<Transform> GetWayPoints()
+        {
+            return waypoints;
+        }
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
